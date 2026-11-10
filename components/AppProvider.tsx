@@ -19,7 +19,20 @@ interface Ctx {
   resetDemo: () => Promise<void>;
 }
 
-const AppContext = createContext<Ctx | null>(null);
+const fallbackCtx: Ctx = {
+  ready: false,
+  user: null,
+  data: emptyData(),
+  retriever: new Retriever([]),
+  update: async (fn) => fn(emptyData()),
+  replace: async () => {},
+  signIn: async () => {},
+  signUp: async () => {},
+  signOut: () => {},
+  resetDemo: async () => {},
+};
+
+const AppContext = createContext<Ctx>(fallbackCtx);
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
@@ -150,6 +163,5 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
 export function useApp() {
   const c = useContext(AppContext);
-  if (!c) throw new Error("useApp must be used inside AppProvider");
-  return c;
+  return c || fallbackCtx;
 }
