@@ -1,0 +1,42 @@
+{
+  "name": "gapfinder-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GapFinder AI - finds what a student doesn't know from their own syllabus, notes and past papers (RAG + Groq).",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run && tsx tests/core.test.ts",
+    "test:unit": "vitest run tests/unit.test.ts",
+    "test:integration": "vitest run tests/integration.test.ts",
+    "test:e2e": "vitest run tests/e2e.test.ts",
+    "test:core": "tsx tests/core.test.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/groq": "^2.0.0",
+    "@qdrant/js-client-rest": "^1.20.0",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.119.0",
+    "ai": "^5.0.0",
+    "crypto-js": "^4.2.0",
+    "inngest": "^4.26.2",
+    "next": "^16.4.5",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "unpdf": "^1.0.0",
+    "vitest": "^5.1.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=18.18"
+  }
+}
